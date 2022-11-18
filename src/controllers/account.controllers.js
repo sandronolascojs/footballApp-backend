@@ -4,7 +4,7 @@ import User from '../models/users.models'
 
 export const verifyEmail = async (req, res, next) => {
   try {
-    const { token } = req.query
+    const { token } = req.params
     const decoded = await verifyJWT(token)
 
     if (!decoded) {
