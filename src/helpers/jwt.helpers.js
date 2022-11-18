@@ -10,5 +10,9 @@ export const generateEmailJWT = async (payload) => {
 }
 
 export const verifyJWT = async (token) => {
-  return await jwt.verify(token, JWT_SECRET)
+  try {
+    return jwt.verify(token, JWT_SECRET)
+  } catch (err) {
+    console.log(err)
+  }
 }

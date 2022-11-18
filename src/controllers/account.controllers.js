@@ -15,7 +15,7 @@ export const verifyEmail = async (req, res, next) => {
     const searchUser = await User.findById(user.id)
 
     if (searchUser.isVerified === true) {
-      return responseHandler(res, 401, true, 'User already verified', null)
+      return responseHandler(res, 409, true, 'User already verified', null)
     }
 
     const verifyUser = await User.findByIdAndUpdate(user.id, { isVerified: true })
