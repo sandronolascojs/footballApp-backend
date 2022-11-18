@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 config()
 
 module.exports = {
+  NODE_ENV: process.env.NODE_ENVIRONMENT,
   PORT: process.env.PORT,
   DB: {
     production: {
@@ -25,5 +26,9 @@ module.exports = {
     username: process.env.NODEMAILER_USERNAME,
     password: process.env.NODEMAILER_PASSWORD
   },
-  MONGODB_URI: process.env.MONGODB_URI
+  MONGODB_URI: process.env.MONGODB_URI,
+  CLIENT_URI: {
+    production: process.env.CLIENT_URI_PRODUCTION,
+    development: process.env.CLIENT_URI_DEVELOPMENT
+  }
 }
