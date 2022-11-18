@@ -4,6 +4,18 @@ import Group from '../models/groups.models'
 
 export const getAllTeams = async (req, res, next) => {
   try {
+    const { ranking } = req.query
+
+    if (ranking) {
+      const teams = await Teams.find({}).sort({ points: ranking })
+
+      if (teams.length <= 0) {
+        return responseHandler(res, 404, true, 'Teams no found', null)
+      }
+
+      return responseHandler(res, 200, false, 'Teams found', teams)
+    }
+
     const teams = await Teams.findAll()
 
     if (teams.length <= 0) {
